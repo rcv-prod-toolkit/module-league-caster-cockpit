@@ -1,0 +1,23 @@
+{
+  "name": "module-league-lobby",
+  "version": "1.0.0",
+  "description": "Module that provides information about the current lobby for casters",
+  "author": "RCVolus",
+  "license": "MIT",
+  "toolkit": {
+    "modes": [
+      "PLUGIN"
+    ],
+    "plugin": {
+      "main": "dist/plugin.js"
+    },
+    "needsBuild": true
+  },
+  "dependencies": {
+    "typescript": "^4.3.2",
+    "@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
