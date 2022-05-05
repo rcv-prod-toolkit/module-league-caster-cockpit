@@ -16,11 +16,6 @@ module.exports = async (ctx: PluginContext) => {
     }]
   });
 
-  
-  ctx.LPTE.on(namespace, 'request', e => {
-    // TODO
-  });
-
   // Emit event that we're ready to operate
   ctx.LPTE.emit({
     meta: {
