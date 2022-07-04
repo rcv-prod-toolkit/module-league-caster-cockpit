@@ -1,0 +1,96 @@
+#player {
+  width: 100%;
+  display: flex;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.team {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.playerRow {
+  width: 100%;
+  display: flex;
+  border: 1px solid lightgray;
+  color: black !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-decoration: none;
+}
+
+.playerRow:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.red .playerRow {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.playerIcon {
+  width: 64px;
+  object-fit: contain;
+}
+
+.playerInfo {
+  width: 70%;
+}
+
+h3 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin: 0 !important;
+}
+
+.eloInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center !important;
+  width: 100px;
+}
+
+.eloIcon {
+  width: 35px;
+  object-fit: contain;
+}
+
+.playerLink {
+  width: 45px;
+  text-align: center !important;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 0.5px solid lightgray;
+}
+
+.red .playerLink {
+  border-left: none;
+  border-right: 0.5px solid lightgray;
+}
+
+.playerRow:hover .playerLink {
+  text-decoration: none;
+  background-color: var(--primary);
+  color: var(--light) !important;
+  border-color: var(--light);
+}
+
+.playerLink:hover {
+  text-decoration: none;
+  background-color: var(--primary);
+  color: var(--light) !important;
+  border-color: var(--light);
+}
+
+.multiLinkBtn {
+  margin-top: auto;
+  justify-self: baseline;
+}
