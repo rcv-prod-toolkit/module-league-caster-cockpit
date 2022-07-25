@@ -1,7 +1,7 @@
 const blueTeam = document.querySelector('.team.blue')
 const redTeam = document.querySelector('.team.red')
 
-function displayData (e) {
+function displayData(e) {
   console.log(e)
   const data = e.state?.lcu.lobby?.player ?? e.data
 
@@ -46,7 +46,6 @@ function displayData (e) {
     const elo = document.createElement('p')
     elo.classList.add('elo')
 
-
     if (player.elo !== undefined && player.elo.length > 0) {
       eloIcon.src = `/serve/module-league-static/img/elo/${player.elo[0].tier.toLowerCase()}.png`
       elo.innerText = `${player.elo[0].tier} ${player.elo[0].rank}`
@@ -79,15 +78,25 @@ function displayData (e) {
   }
 
   const blueMultiLinkBtn = document.createElement('a')
-  blueMultiLinkBtn.classList.add('multiLinkBtn', 'btn', 'btn-primary', 'btn-block')
+  blueMultiLinkBtn.classList.add(
+    'multiLinkBtn',
+    'btn',
+    'btn-primary',
+    'btn-block'
+  )
   blueMultiLinkBtn.href = encodeURI(blueMultiLink.slice(0, -1))
   blueMultiLinkBtn.target = '_blank'
   blueMultiLinkBtn.innerHTML = 'OP.GG Overview'
 
   blueTeam.appendChild(blueMultiLinkBtn)
-  
+
   const redMultiLinkBtn = document.createElement('a')
-  redMultiLinkBtn.classList.add('multiLinkBtn', 'btn', 'btn-primary', 'btn-block')
+  redMultiLinkBtn.classList.add(
+    'multiLinkBtn',
+    'btn',
+    'btn-primary',
+    'btn-block'
+  )
   redMultiLinkBtn.href = encodeURI(redMultiLink.slice(0, -1))
   redMultiLinkBtn.target = '_blank'
   redMultiLinkBtn.innerHTML = 'OP.GG Overview'
@@ -95,7 +104,7 @@ function displayData (e) {
   redTeam.appendChild(redMultiLinkBtn)
 }
 
-async function initUi () {
+async function initUi() {
   const data = await window.LPTE.request({
     meta: {
       namespace: 'module-league-state',
