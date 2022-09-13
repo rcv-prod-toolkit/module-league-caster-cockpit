@@ -11,11 +11,13 @@
     "plugin": {
       "main": "dist/plugin.js"
     },
-    "needsBuild": true
+    "needsBuild": true,
+    "dependencies": [
+      "module-league-state"
+    ]
   },
   "dependencies": {
-    "typescript": "^4.3.2",
-    "@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types"
+    "typescript": "^4.3.2","@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types"
   },
   "scripts": {
     "build": "tsc"
