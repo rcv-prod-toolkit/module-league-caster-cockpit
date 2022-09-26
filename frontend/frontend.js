@@ -46,9 +46,9 @@ function displayData(e) {
     const elo = document.createElement('p')
     elo.classList.add('elo')
 
-    if (player.elo !== undefined && player.elo.length > 0) {
-      eloIcon.src = `/serve/module-league-static/img/elo/${player.elo[0].tier.toLowerCase()}.png`
-      elo.innerText = `${player.elo[0].tier} ${player.elo[0].rank}`
+    if (player.elo !== undefined && player.elo.tier !== 'NONE') {
+      eloIcon.src = `/serve/module-league-static/img/elo/${player.elo.tier.toLowerCase()}.png`
+      elo.innerText = `${player.elo.tier} ${player.elo.division}`
     } else {
       eloIcon.src = '/serve/module-league-static/img/elo/unranked.png'
     }
