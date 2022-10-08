@@ -70,10 +70,10 @@ function displayData(e) {
     playerRow.appendChild(playerLink)
 
     if (player.teamId === 100) {
-      blueMultiLink += player.name + ','
+      blueMultiLink += player.summonerName + ','
       bluePlayers.appendChild(playerRow)
     } else {
-      redMultiLink += player.name + ','
+      redMultiLink += player.summonerName + ','
       redPlayers.appendChild(playerRow)
     }
   }
