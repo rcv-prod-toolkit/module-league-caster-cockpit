@@ -1,6 +1,6 @@
 {
   "name": "module-league-lobby",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Module that provides information about the current lobby for casters",
   "author": "RCVolus",
   "license": "MIT",
