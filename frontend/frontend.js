@@ -3,6 +3,8 @@ const redPlayers = document.querySelector('#redPlayers')
 const blueMultiLinkBtn = document.querySelector('#blueMultiLinkBtn')
 const redMultiLinkBtn = document.querySelector('#redMultiLinkBtn')
 
+let server = 'euw'
+
 function displayData(e) {
   const data = e.state?.lcu.lobby ?? e.data
 
@@ -12,8 +14,8 @@ function displayData(e) {
   if (data === undefined) return
   if (!data._available) return
 
-  let blueMultiLink = 'https://euw.op.gg/multisearch/euw?summoners='
-  let redMultiLink = 'https://euw.op.gg/multisearch/euw?summoners='
+  let blueMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
+  let redMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
 
   for (const player of data.members) {
     const playerRow = document.createElement('li')
@@ -63,7 +65,7 @@ function displayData(e) {
 
     const playerLink = document.createElement('a')
     playerLink.classList.add('playerLink')
-    playerLink.href = player.opgg
+    playerLink.href = `https://www.op.gg/summoners/${server}/${player.summonerName}`
     playerLink.target = '_blank'
     playerLink.innerHTML = '<i class="fa fa-external-link"></i>'
 
@@ -81,8 +83,8 @@ function displayData(e) {
   blueMultiLinkBtn.href = encodeURI(blueMultiLink.slice(0, -1))
   redMultiLinkBtn.href = encodeURI(redMultiLink.slice(0, -1))
 
-  slist(bluePlayers)
-  slist(redPlayers)
+  /* slist(bluePlayers)
+  slist(redPlayers) */
 }
 
 async function initUi() {
@@ -95,6 +97,16 @@ async function initUi() {
   })
 
   displayData(data)
+
+  const serverReq = await window.LPTE.request({
+    meta: {
+      namespace: 'plugin-webapi',
+      type: 'fetch-location',
+      version: 1
+    }
+  })
+
+  server = serverReq.server.toLowerCase().replace(/[0-9]/g, '')
 }
 
 function slist(target) {
