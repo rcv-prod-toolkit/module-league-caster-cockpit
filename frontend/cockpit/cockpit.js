@@ -51,7 +51,7 @@ function displayData(e) {
 
     if (player.elo !== undefined && player.elo.tier !== 'NONE') {
       eloIcon.src = `/serve/module-league-static/img/elo/${player.elo.tier.toLowerCase()}.png`
-      elo.innerText = `${player.elo.tier} ${player.elo.division}`
+      elo.innerText = `${player.elo.tier} ${player.elo.division !== 'NA' ? player.elo.division : ''}`
     } else {
       eloIcon.src = '/serve/module-league-static/img/elo/unranked.png'
     }
