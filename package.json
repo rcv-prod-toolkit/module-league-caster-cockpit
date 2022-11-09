@@ -1,7 +1,7 @@
 {
-  "name": "module-league-lobby",
-  "version": "1.4.3",
-  "description": "Module that provides information about the current lobby for casters",
+  "name": "module-league-caster-cockpit",
+  "version": "1.0.0",
+  "description": "Module that provides information about the current lobby and game for casters",
   "author": "RCVolus",
   "license": "MIT",
   "toolkit": {
@@ -13,7 +13,9 @@
     },
     "needsBuild": true,
     "dependencies": [
-      "module-league-state"
+      "module-league-state",
+      "module-league-static",
+      "module-teams"
     ]
   },
   "dependencies": {

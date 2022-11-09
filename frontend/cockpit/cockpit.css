@@ -1,3 +1,7 @@
+.module-league-caster-cockpit {
+  padding: 1rem;
+}
+
 #player {
   width: 100%;
   display: flex;
@@ -6,9 +10,20 @@
 }
 
 .team {
-  width: 50%;
+  width: 27.5%;
   display: flex;
   flex-direction: column;
+}
+
+#game-control {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 5rem 0;
+}
+
+#show-gold {
+  margin: auto;
 }
 
 .playerRow {
