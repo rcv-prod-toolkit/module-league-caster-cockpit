@@ -25,11 +25,11 @@ jobs:
           npm run build
 
       - name: Create Zip
-        run: zip -r module-league-lobby.zip package.json package-lock.json dist/* frontend/*
+        run: zip -r module-league-caster-cockpit.zip package.json package-lock.json dist/* frontend/*
 
       - uses: 'marvinpinto/action-automatic-releases@latest'
         with:
           repo_token: '${{ secrets.GITHUB_TOKEN }}'
           prerelease: false
           files: |
-            module-league-lobby.zip
+            module-league-caster-cockpit.zip
