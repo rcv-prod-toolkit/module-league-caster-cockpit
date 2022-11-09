@@ -10,27 +10,30 @@
 }
 
 .team {
-  width: 27.5%;
+  width: 30%;
   display: flex;
   flex-direction: column;
 }
 
 #game-control {
-  width: 45%;
+  width: 40%;
   display: flex;
   flex-direction: column;
-  padding: 1rem 5rem 0;
+  padding: 1rem 3rem 0;
 }
 
 #show-gold {
   margin: auto;
 }
 
+#bluePlayers {
+  padding: 0 !important;
+}
+
 .playerRow {
   width: 100%;
   display: flex;
-  border: 1px solid lightgray;
-  color: black !important;
+  border: 1px solid var(--gray-dark);
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -52,7 +55,7 @@
 }
 
 .playerInfo {
-  width: 70%;
+  width: 100%;
 }
 
 h3 {
@@ -74,35 +77,6 @@ p {
 .eloIcon {
   width: 35px;
   object-fit: contain;
-}
-
-.playerLink {
-  width: 45px;
-  text-align: center !important;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 0.5px solid lightgray;
-}
-
-.red .playerLink {
-  border-left: none;
-  border-right: 0.5px solid lightgray;
-}
-
-.playerRow:hover .playerLink {
-  text-decoration: none;
-  background-color: var(--primary);
-  color: var(--light) !important;
-  border-color: var(--light);
-}
-
-.playerLink:hover {
-  text-decoration: none;
-  background-color: var(--primary);
-  color: var(--light) !important;
-  border-color: var(--light);
 }
 
 .multiLinkBtn {

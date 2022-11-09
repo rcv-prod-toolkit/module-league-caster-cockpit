@@ -8,11 +8,11 @@ let server = 'euw'
 function displayData(e) {
   const data = e.state?.lcu.lobby ?? e.data
 
-  bluePlayers.innerHTML = ''
-  redPlayers.innerHTML = ''
-
   if (data === undefined) return
   if (!data._available) return
+
+  bluePlayers.innerHTML = ''
+  redPlayers.innerHTML = ''
 
   let blueMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
   let redMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
@@ -28,13 +28,13 @@ function displayData(e) {
 
     playerRow.appendChild(playerIcon)
 
-    const name = document.createElement('h3')
+    const name = document.createElement('h4')
     name.classList.add('name')
     name.innerText = player.summonerName
 
     const level = document.createElement('p')
     level.classList.add('level')
-    level.innerText = 'Level:' + player.level
+    level.innerText = 'Level:' + player.summonerLevel
 
     const playerInfo = document.createElement('div')
     playerInfo.classList.add('playerInfo')
@@ -63,13 +63,22 @@ function displayData(e) {
 
     playerRow.appendChild(eloInfo)
 
-    const playerLink = document.createElement('a')
-    playerLink.classList.add('playerLink')
-    playerLink.href = `https://www.op.gg/summoners/${server}/${player.summonerName}`
-    playerLink.target = '_blank'
-    playerLink.innerHTML = '<i class="fa fa-external-link"></i>'
+    const playerHighlight = document.createElement('button')
+    playerHighlight.classList.add('player-highlight', 'btn', 'btn-primary')
+    playerHighlight.innerHTML = 'Highlight'
+    playerHighlight.onclick = () => {
+      LPTE.emit({
+        meta: {
+          namespace: 'module-league-in-game',
+          type: 'highlight-player',
+          version: 1
+        },
+        team: player.teamId,
+        position: player.sortedPosition
+      })
+    }
 
-    playerRow.appendChild(playerLink)
+    playerRow.appendChild(playerHighlight)
 
     if (player.teamId === 100) {
       blueMultiLink += player.summonerName + ','
@@ -135,7 +144,6 @@ function mapZoom() {
     }
   })
 }
-
 
 window.LPTE.onready(() => {
   initUi()
