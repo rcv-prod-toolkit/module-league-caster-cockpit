@@ -34,7 +34,7 @@ function setInGameData (e) {
 }
 
 function displayData() {
-  if (lobby === undefined) return
+  if (lobby.members === undefined) return
 
   bluePlayers.innerHTML = ''
   redPlayers.innerHTML = ''
@@ -213,7 +213,7 @@ function mapZoom() {
   LPTE.emit({
     meta: {
       namespace: 'module-vmix',
-      type: 'map-zoom',
+      type: 'MapZoomIn',
       version: 1
     }
   })
