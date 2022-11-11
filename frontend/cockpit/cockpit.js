@@ -4,12 +4,37 @@ const blueMultiLinkBtn = document.querySelector('#blueMultiLinkBtn')
 const redMultiLinkBtn = document.querySelector('#redMultiLinkBtn')
 
 let server = 'euw'
+let lobby
+let champselect
+let inGame
 
-function displayData(e) {
-  const data = e.state?.lcu.lobby ?? e.data
+function setLobbyData (e) {
+  const data = e.state?.lcu.lobby ?? e.data ?? lobby
 
   if (data === undefined) return
-  if (!data._available) return
+
+  lobby = data
+  displayData()
+}
+function setChampselectData (e) {
+  const data = e.state?.lcu.champselect ?? e.data ?? champselect
+
+  if (data === undefined) return
+
+  champselect = data
+  displayData()
+}
+function setInGameData (e) {
+  const data = e.state?.live ?? e.gameState ?? inGame
+
+  if (data === undefined) return
+
+  inGame = data
+  displayData()
+}
+
+function displayData() {
+  if (lobby === undefined) return
 
   bluePlayers.innerHTML = ''
   redPlayers.innerHTML = ''
@@ -17,35 +42,36 @@ function displayData(e) {
   let blueMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
   let redMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
 
-  for (const player of data.members) {
+  for (const player of lobby.members) {
     const playerRow = document.createElement('li')
     playerRow.classList.add('playerRow')
-    playerRow.dataset.team = player.teamId
 
+    // Summoner Icon
     const playerIcon = document.createElement('img')
     playerIcon.classList.add('playerIcon')
     playerIcon.src = `/serve/module-league-static/img/profileicon/${player.summonerIconId}.png`
-
     playerRow.appendChild(playerIcon)
 
+    // Summoner Name
     const name = document.createElement('h4')
     name.classList.add('name')
-    name.innerText = player.summonerName
+    name.innerText = player.nickname
 
+    // Summoner level
     const level = document.createElement('p')
     level.classList.add('level')
     level.innerText = 'Level:' + player.summonerLevel
 
+    // Summoner info
     const playerInfo = document.createElement('div')
     playerInfo.classList.add('playerInfo')
     playerInfo.appendChild(name)
     playerInfo.appendChild(level)
-
     playerRow.appendChild(playerInfo)
 
+    // Summoner Elo
     const eloIcon = document.createElement('img')
     eloIcon.classList.add('eloIcon')
-
     const elo = document.createElement('p')
     elo.classList.add('elo')
 
@@ -60,9 +86,9 @@ function displayData(e) {
     eloInfo.classList.add('eloInfo')
     eloInfo.appendChild(eloIcon)
     eloInfo.appendChild(elo)
-
     playerRow.appendChild(eloInfo)
 
+    // Summoner Highlight
     const playerHighlight = document.createElement('button')
     playerHighlight.classList.add('player-highlight', 'btn', 'btn-primary')
     playerHighlight.innerHTML = 'Highlight'
@@ -77,9 +103,55 @@ function displayData(e) {
         position: player.sortedPosition
       })
     }
-
     playerRow.appendChild(playerHighlight)
 
+    // Game Information
+    const gameDataDiv = document.createElement('div')
+    gameDataDiv.classList.add('game-data')
+
+    // Champselect
+    const cs = player.teamId === 100 ? champselect?.blueTeam : champselect?.redTeam
+    const csPlayer = cs?.picks?.find(p => p.displayName === player.nickname)
+
+    if (csPlayer !== undefined) {
+      // Champion
+      const championIcon = document.createElement('img')
+      championIcon.classList.add('championIcon')
+      championIcon.src = csPlayer.champion.squareImg
+      gameDataDiv.appendChild(championIcon)
+
+      // Summoner Spells
+      const spell1Icon = document.createElement('img')
+      spell1Icon.classList.add('spellIcon')
+      spell1Icon.src = csPlayer.spell1.icon
+      gameDataDiv.appendChild(spell1Icon)
+      const spell2Icon = document.createElement('img')
+      spell2Icon.classList.add('spellIcon')
+      spell2Icon.src = csPlayer.spell2.icon
+      gameDataDiv.appendChild(spell2Icon)
+    }
+
+    // inGame
+    const igPlayer = inGame?.player?.find(p => p.nickname === player.nickname)
+
+    if (igPlayer !== undefined) {
+      // items
+      const itemsDiv = document.createElement('div')
+      itemsDiv.classList.add('items')
+
+      for (const item of igPlayer.items) {
+        const itemIcon = document.createElement('img')
+        itemIcon.classList.add('item')
+        itemIcon.src = `/serve/module-league-static/img/item/${item}.png`
+        itemsDiv.appendChild(itemIcon)
+      }
+
+      gameDataDiv.appendChild(itemsDiv)
+    }
+
+    playerRow.appendChild(gameDataDiv)
+
+    // Add Summoner to team
     if (player.teamId === 100) {
       blueMultiLink += player.summonerName + ','
       bluePlayers.appendChild(playerRow)
@@ -102,7 +174,9 @@ async function initUi() {
     }
   })
 
-  displayData(data)
+  setLobbyData(data)
+  setChampselectData(data)
+  setInGameData(data)
 
   const serverReq = await window.LPTE.request({
     meta: {
@@ -147,5 +221,7 @@ function mapZoom() {
 
 window.LPTE.onready(() => {
   initUi()
-  window.LPTE.on('module-league-state', 'lobby-update', displayData)
+  window.LPTE.on('module-league-state', 'lobby-update', setLobbyData)
+  window.LPTE.on('module-league-state', 'champselect-update', setChampselectData)
+  window.LPTE.on('module-league-state', 'save-live-game-stats', setInGameData)
 })
