@@ -8,7 +8,7 @@ let lobby
 let champselect
 let inGame
 
-function setLobbyData (e) {
+function setLobbyData(e) {
   const data = e.state?.lcu.lobby ?? e.data ?? lobby
 
   if (data === undefined) return
@@ -16,7 +16,7 @@ function setLobbyData (e) {
   lobby = data
   displayData()
 }
-function setChampselectData (e) {
+function setChampselectData(e) {
   const data = e.state?.lcu.champselect ?? e.data ?? champselect
 
   if (data === undefined) return
@@ -24,7 +24,7 @@ function setChampselectData (e) {
   champselect = data
   displayData()
 }
-function setInGameData (e) {
+function setInGameData(e) {
   const data = e.state?.live ?? e.gameState ?? inGame
 
   if (data === undefined) return
@@ -77,7 +77,9 @@ function displayData() {
 
     if (player.elo !== undefined && player.elo.tier !== 'NONE') {
       eloIcon.src = `/serve/module-league-static/img/elo/${player.elo.tier.toLowerCase()}.png`
-      elo.innerText = `${player.elo.tier} ${player.elo.division !== 'NA' ? player.elo.division : ''}`
+      elo.innerText = `${player.elo.tier} ${
+        player.elo.division !== 'NA' ? player.elo.division : ''
+      }`
     } else {
       eloIcon.src = '/serve/module-league-static/img/elo/unranked.png'
     }
@@ -110,8 +112,9 @@ function displayData() {
     gameDataDiv.classList.add('game-data')
 
     // Champselect
-    const cs = player.teamId === 100 ? champselect?.blueTeam : champselect?.redTeam
-    const csPlayer = cs?.picks?.find(p => p.displayName === player.nickname)
+    const cs =
+      player.teamId === 100 ? champselect?.blueTeam : champselect?.redTeam
+    const csPlayer = cs?.picks?.find((p) => p.displayName === player.nickname)
 
     if (csPlayer !== undefined) {
       // Champion
@@ -132,7 +135,7 @@ function displayData() {
     }
 
     // inGame
-    const igPlayer = inGame?.player?.find(p => p.nickname === player.nickname)
+    const igPlayer = inGame?.player?.find((p) => p.nickname === player.nickname)
 
     if (igPlayer !== undefined) {
       // items
@@ -222,6 +225,10 @@ function mapZoom() {
 window.LPTE.onready(() => {
   initUi()
   window.LPTE.on('module-league-state', 'lobby-update', setLobbyData)
-  window.LPTE.on('module-league-state', 'champselect-update', setChampselectData)
+  window.LPTE.on(
+    'module-league-state',
+    'champselect-update',
+    setChampselectData
+  )
   window.LPTE.on('module-league-state', 'save-live-game-stats', setInGameData)
 })
