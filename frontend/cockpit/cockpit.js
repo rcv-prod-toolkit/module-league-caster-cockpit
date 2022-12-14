@@ -101,8 +101,8 @@ function displayData() {
           type: 'highlight-player',
           version: 1
         },
-        team: player.teamId,
-        position: player.sortedPosition
+        playerId: player.sortedPosition,
+        teamId: player.teamId
       })
     }
     playerRow.appendChild(playerHighlight)
@@ -201,6 +201,15 @@ function showPlatings() {
     }
   })
 }
+function hidePlatings() {
+  LPTE.emit({
+    meta: {
+      namespace: 'module-league-in-game',
+      type: 'hide-platings',
+      version: 1
+    }
+  })
+}
 
 function showGold() {
   LPTE.emit({
@@ -212,11 +221,20 @@ function showGold() {
   })
 }
 
-function mapZoom() {
+function mapZoomIn() {
   LPTE.emit({
     meta: {
       namespace: 'module-vmix',
       type: 'MapZoomIn',
+      version: 1
+    }
+  })
+}
+function mapZoomOut() {
+  LPTE.emit({
+    meta: {
+      namespace: 'module-vmix',
+      type: 'MapZoomOut',
       version: 1
     }
   })

@@ -30,30 +30,58 @@
         >
       </div>
       <div id="game-control">
-        <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-secondary btn-block"
-            onclick="showPlatings()"
-          >
-            Show Platings
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <div class="dropdown-menu">
+        <div class="d-flex">
+          <div class="btn-group w-50">
             <button
-              class="dropdown-item"
-              onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/show-platings`)"
+              type="button"
+              class="btn btn-secondary w-50"
+              onclick="showPlatings()"
             >
-              Copy Action-Link
+              Show Platings
             </button>
+            <button
+              type="button"
+              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <button
+                class="dropdown-item"
+                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/show-platings`)"
+              >
+                Copy Action-Link
+              </button>
+            </div>
+          </div>
+          <div class="btn-group w-50">
+            <button
+              type="button"
+              class="btn btn-secondary btn-block"
+              onclick="hidePlatings()"
+            >
+              Hide Platings
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <button
+                class="dropdown-item"
+                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/hide-platings`)"
+              >
+                Copy Action-Link
+              </button>
+            </div>
           </div>
         </div>
         <div class="d-flex mt-auto">
@@ -80,8 +108,8 @@
             </div>
           </div>
           <div id="map-zoom" class="btn-group">
-            <button type="button" class="btn btn-success" onclick="mapZoom()">
-              Zoom Map
+            <button type="button" class="btn btn-success" onclick="mapZoomIn()">
+              Zoom In Map
             </button>
             <button
               type="button"
@@ -95,7 +123,33 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-vmix/map-zoom`)"
+                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-vmix/MapZoomIn`)"
+              >
+                Copy Action-Link
+              </button>
+            </div>
+          </div>
+          <div id="map-zoom" class="btn-group">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="mapZoomOut()"
+            >
+              Zoom Out Map
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <button
+                class="dropdown-item"
+                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-vmix/MapZoomOut`)"
               >
                 Copy Action-Link
               </button>
