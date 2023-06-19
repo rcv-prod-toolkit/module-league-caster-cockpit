@@ -3,10 +3,12 @@ const redPlayers = document.querySelector('#redPlayers')
 const blueMultiLinkBtn = document.querySelector('#blueMultiLinkBtn')
 const redMultiLinkBtn = document.querySelector('#redMultiLinkBtn')
 
-let server = 'euw'
+let gameServer = 'euw'
 let lobby
 let champselect
 let inGame
+
+let server
 
 function setLobbyData(e) {
   const data = e.state?.lcu.lobby ?? e.data ?? lobby
@@ -39,8 +41,8 @@ function displayData() {
   bluePlayers.innerHTML = ''
   redPlayers.innerHTML = ''
 
-  let blueMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
-  let redMultiLink = `https://euw.op.gg/multisearch/${server}?summoners=`
+  let blueMultiLink = `https://euw.op.gg/multisearch/${gameServer}?summoners=`
+  let redMultiLink = `https://euw.op.gg/multisearch/${gameServer}?summoners=`
 
   for (const player of lobby.members) {
     const playerRow = document.createElement('li')
@@ -169,6 +171,8 @@ function displayData() {
 }
 
 async function initUi() {
+  server = await window.constants.getWebServerPort()
+
   const data = await window.LPTE.request({
     meta: {
       namespace: 'module-league-state',
@@ -189,7 +193,7 @@ async function initUi() {
     }
   })
 
-  server = serverReq.server.toLowerCase().replace(/[0-9]/g, '')
+  gameServer = serverReq.server.toLowerCase().replace(/[0-9]/g, '')
 }
 
 function showPlatings() {
@@ -235,6 +239,26 @@ function mapZoomOut() {
     meta: {
       namespace: 'module-vmix',
       type: 'MapZoomOut',
+      version: 1
+    }
+  })
+}
+
+function showLeaderBoard(leaderboard) {
+  LPTE.emit({
+    meta: {
+      namespace: 'module-league-in-game',
+      type: 'show-leader-board',
+      version: 1
+    },
+    leaderboard
+  })
+}
+function hideLeaderBoard() {
+  LPTE.emit({
+    meta: {
+      namespace: 'module-league-in-game',
+      type: 'hide-leader-board',
       version: 1
     }
   })
