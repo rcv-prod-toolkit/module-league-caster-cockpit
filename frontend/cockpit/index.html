@@ -51,7 +51,10 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/show-platings`)"
+                onclick="window.getActionLink(
+                  'module-league-in-game',
+                  'show-platings'
+                )"
               >
                 Copy Action-Link
               </button>
@@ -77,7 +80,10 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/hide-platings`)"
+                onclick="window.getActionLink(
+                  'module-league-in-game',
+                  'hide-platings'
+                )"
               >
                 Copy Action-Link
               </button>
@@ -101,7 +107,13 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/show-leader-board?leaderboard=gold`)"
+                onclick="window.getActionLink(
+                  'module-league-in-game',
+                  'show-leader-board',
+                  {
+                    'leaderboard': 'gold'
+                  }
+                )"
               >
                 Copy Action-Link
               </button>
@@ -123,7 +135,13 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/show-leader-board?leaderboard=xp`)"
+                onclick="window.getActionLink(
+                  'module-league-in-game',
+                  'show-leader-board',
+                  {
+                    'leaderboard': 'xp'
+                  }
+                )"
               >
                 Copy Action-Link
               </button>
@@ -145,7 +163,10 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-in-game/hide-leader-board`)"
+                onclick="window.getActionLink(
+                  'module-league-in-game',
+                  'hide-leader-board'
+                )"
               >
                 Copy Action-Link
               </button>
@@ -169,7 +190,10 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-league-caster-cockpit/show-gold`)"
+                onclick="window.getActionLink(
+                  'module-league-caster-cockpit',
+                  'show-gold'
+                )"
               >
                 Copy Action-Link
               </button>
@@ -191,7 +215,10 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-vmix/MapZoomIn`)"
+                onclick="window.getActionLink(
+                  'module-vmix',
+                  'MapZoomIn'
+                )"
               >
                 Copy Action-Link
               </button>
@@ -217,7 +244,10 @@
             <div class="dropdown-menu">
               <button
                 class="dropdown-item"
-                onclick="navigator.clipboard.writeText(`http://${server}/api/events/shortcut/ingest/module-vmix/MapZoomOut`)"
+                onclick="window.getActionLink(
+                  'module-vmix',
+                  'MapZoomOut'
+                )"
               >
                 Copy Action-Link
               </button>
