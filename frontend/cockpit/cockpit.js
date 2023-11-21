@@ -181,10 +181,6 @@ async function initUi() {
     }
   })
 
-  setLobbyData(data)
-  setChampselectData(data)
-  setInGameData(data)
-
   const serverReq = await window.LPTE.request({
     meta: {
       namespace: 'plugin-webapi',
@@ -193,43 +189,63 @@ async function initUi() {
     }
   })
 
-  const server = serverReq.server
-  switch (true) {
-    case server === 'BR1':
-      return gameServer = 'br'
-    case server === 'EUN1':
-      return gameServer = 'eune'
-    case server === 'EUW1':
-      return gameServer = 'euw'
-    case server === 'JP1':
-      return gameServer = 'jp'
-    case server === 'KR':
-      return gameServer = 'kr'
-    case server === 'LA1':
-      return gameServer = 'lan'
-    case server === 'LA2':
-      return gameServer = 'las'
-    case server === 'NA1':
-      return gameServer = 'na'
-    case server === 'TR1':
-      return gameServer = 'tr'
-    case server === 'RU':
-      return gameServer = 'ru'
-    case server === 'OC1':
-      return gameServer = 'oce'
-    case server === 'PH2':
-      return gameServer = 'ph'
-    case server === 'SG2':
-      return gameServer = 'sg'
-    case server === 'TH2':
-      return gameServer = 'th'
-    case server === 'TW2':
-      return gameServer = 'tw'
-    case server === 'VN2':
-      return gameServer = 'vn'
+  const lolServer = serverReq.server
+  switch (lolServer) {
+    case 'BR1':
+      gameServer = 'br'
+      break;
+    case 'EUN1':
+      gameServer = 'eune'
+      break;
+    case 'EUW1':
+      gameServer = 'euw'
+      break;
+    case 'JP1':
+      gameServer = 'jp'
+      break;
+    case 'KR':
+      gameServer = 'kr'
+      break;
+    case 'LA1':
+      gameServer = 'lan'
+      break;
+    case 'LA2':
+      gameServer = 'las'
+      break;
+    case 'NA1':
+      gameServer = 'na'
+      break;
+    case 'TR1':
+      gameServer = 'tr'
+      break;
+    case 'RU':
+      gameServer = 'ru'
+      break;
+    case 'OC1':
+      gameServer = 'oce'
+      break;
+    case 'PH2':
+      gameServer = 'ph'
+      break;
+    case 'SG2':
+      gameServer = 'sg'
+      break;
+    case 'TH2':
+      gameServer = 'th'
+      break;
+    case 'TW2':
+      gameServer = 'tw'
+      break;
+    case 'VN2':
+      gameServer = 'vn'
+      break;
     default:
-      return gameServer = 'euw'
+      gameServer = 'euw'
   }
+
+  setLobbyData(data)
+  setChampselectData(data)
+  setInGameData(data)
 }
 
 function showPlatings() {
