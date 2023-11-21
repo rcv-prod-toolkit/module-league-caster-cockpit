@@ -193,7 +193,43 @@ async function initUi() {
     }
   })
 
-  gameServer = serverReq.server.toLowerCase().replace(/[0-9]/g, '')
+  const server = serverReq.server
+  switch (true) {
+    case server === 'BR1':
+      return gameServer = 'br'
+    case server === 'EUN1':
+      return gameServer = 'eune'
+    case server === 'EUW1':
+      return gameServer = 'euw'
+    case server === 'JP1':
+      return gameServer = 'jp'
+    case server === 'KR':
+      return gameServer = 'kr'
+    case server === 'LA1':
+      return gameServer = 'lan'
+    case server === 'LA2':
+      return gameServer = 'las'
+    case server === 'NA1':
+      return gameServer = 'na'
+    case server === 'TR1':
+      return gameServer = 'tr'
+    case server === 'RU':
+      return gameServer = 'ru'
+    case server === 'OC1':
+      return gameServer = 'oce'
+    case server === 'PH2':
+      return gameServer = 'ph'
+    case server === 'SG2':
+      return gameServer = 'sg'
+    case server === 'TH2':
+      return gameServer = 'th'
+    case server === 'TW2':
+      return gameServer = 'tw'
+    case server === 'VN2':
+      return gameServer = 'vn'
+    default:
+      return gameServer = 'euw'
+  }
 }
 
 function showPlatings() {
