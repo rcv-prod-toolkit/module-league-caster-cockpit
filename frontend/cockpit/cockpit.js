@@ -18,6 +18,7 @@ function setLobbyData(e) {
   lobby = data
   displayData()
 }
+
 function setChampselectData(e) {
   const data = e.state?.lcu.champselect ?? e.data ?? champselect
 
@@ -26,6 +27,7 @@ function setChampselectData(e) {
   champselect = data
   displayData()
 }
+
 function setInGameData(e) {
   const data = e.state?.live ?? e.gameState ?? inGame
 
@@ -193,52 +195,52 @@ async function initUi() {
   switch (lolServer) {
     case 'BR1':
       gameServer = 'br'
-      break;
+      break
     case 'EUN1':
       gameServer = 'eune'
-      break;
+      break
     case 'EUW1':
       gameServer = 'euw'
-      break;
+      break
     case 'JP1':
       gameServer = 'jp'
-      break;
+      break
     case 'KR':
       gameServer = 'kr'
-      break;
+      break
     case 'LA1':
       gameServer = 'lan'
-      break;
+      break
     case 'LA2':
       gameServer = 'las'
-      break;
+      break
     case 'NA1':
       gameServer = 'na'
-      break;
+      break
     case 'TR1':
       gameServer = 'tr'
-      break;
+      break
     case 'RU':
       gameServer = 'ru'
-      break;
+      break
     case 'OC1':
       gameServer = 'oce'
-      break;
+      break
     case 'PH2':
       gameServer = 'ph'
-      break;
+      break
     case 'SG2':
       gameServer = 'sg'
-      break;
+      break
     case 'TH2':
       gameServer = 'th'
-      break;
+      break
     case 'TW2':
       gameServer = 'tw'
-      break;
+      break
     case 'VN2':
       gameServer = 'vn'
-      break;
+      break
     default:
       gameServer = 'euw'
   }
@@ -246,74 +248,6 @@ async function initUi() {
   setLobbyData(data)
   setChampselectData(data)
   setInGameData(data)
-}
-
-function showPlatings() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'show-platings',
-      version: 1
-    }
-  })
-}
-function hidePlatings() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'hide-platings',
-      version: 1
-    }
-  })
-}
-
-function showGold() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-caster-cockpit',
-      type: 'show-gold',
-      version: 1
-    }
-  })
-}
-
-function mapZoomIn() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-vmix',
-      type: 'MapZoomIn',
-      version: 1
-    }
-  })
-}
-function mapZoomOut() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-vmix',
-      type: 'MapZoomOut',
-      version: 1
-    }
-  })
-}
-
-function showLeaderBoard(leaderboard) {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'show-leader-board',
-      version: 1
-    },
-    leaderboard
-  })
-}
-function hideLeaderBoard() {
-  LPTE.emit({
-    meta: {
-      namespace: 'module-league-in-game',
-      type: 'hide-leader-board',
-      version: 1
-    }
-  })
 }
 
 window.LPTE.onready(() => {

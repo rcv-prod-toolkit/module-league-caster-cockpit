@@ -22,8 +22,14 @@
   padding: 0 1rem;
 }
 
-#show-gold {
-  margin: auto;
+#show-gold,
+#show-gold-graph {
+  width: 50%;
+}
+
+#map-zoom-in,
+#map-zoom-out {
+  width: 50%;
 }
 
 #bluePlayers,

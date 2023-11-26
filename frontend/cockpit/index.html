@@ -30,6 +30,7 @@
         >
       </div>
       <div id="game-control">
+        <!--- Platings ----->
         <div class="d-flex">
           <div class="btn-group w-50">
             <button
@@ -90,6 +91,7 @@
             </div>
           </div>
         </div>
+        <!--- LeaderBoards ----->
         <div class="d-flex mt-auto mb-2">
           <div class="btn-group">
             <button type="button" class="btn btn-warning" onclick="showLeaderBoard('gold')">
@@ -173,10 +175,11 @@
             </div>
           </div>
         </div>
-        <div class="d-flex">
+        <!--- Gold ----->
+        <div class="d-flex mb-2">
           <div id="show-gold" class="btn-group">
             <button type="button" class="btn btn-warning" onclick="showGold()">
-              Show gold
+              Toggle Gold
             </button>
             <button
               type="button"
@@ -199,7 +202,35 @@
               </button>
             </div>
           </div>
-          <div id="map-zoom" class="btn-group">
+          <div id="show-gold-graph" class="btn-group">
+            <button type="button" class="btn btn-warning" onclick="showGoldGraph()">
+              Toggle Gold-Graph
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning dropdown-toggle dropdown-toggle-split"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <button
+                class="dropdown-item"
+                onclick="window.getActionLink(
+                  'module-league-in-game',
+                  'show-gold-graph'
+                )"
+              >
+                Copy Action-Link
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--- MapZoom ----->
+        <div class="d-flex">
+          <div id="map-zoom-in" class="btn-group">
             <button type="button" class="btn btn-success" onclick="mapZoomIn()">
               Zoom In Map
             </button>
@@ -224,7 +255,7 @@
               </button>
             </div>
           </div>
-          <div id="map-zoom" class="btn-group">
+          <div id="map-zoom-out" class="btn-group">
             <button
               type="button"
               class="btn btn-secondary"
@@ -268,5 +299,6 @@
     </div>
 
     <script src="cockpit.js"></script>
+    <script src="functions.js"></script>
   </body>
 </html>

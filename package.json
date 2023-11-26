@@ -12,9 +12,11 @@
       "main": "dist/plugin.js"
     },
     "needsBuild": true,
+    "toolkitVersion": "v1.8.0",
     "dependencies": [
       "module-league-state",
       "module-league-static",
+      "module-league-in-game",
       "module-teams"
     ]
   },
