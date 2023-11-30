@@ -21,7 +21,7 @@
     ]
   },
   "dependencies": {
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types"
   },
   "scripts": {
