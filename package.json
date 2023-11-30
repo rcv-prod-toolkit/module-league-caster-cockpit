@@ -1,6 +1,6 @@
 {
   "name": "module-league-caster-cockpit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Module that provides information about the current lobby and game for casters",
   "author": "RCVolus",
   "license": "MIT",
