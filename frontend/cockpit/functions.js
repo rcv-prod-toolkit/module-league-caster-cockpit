@@ -22,7 +22,7 @@ function hidePlatings() {
 function mapZoomIn() {
   LPTE.emit({
     meta: {
-      namespace: 'module-vmix',
+      namespace: 'module-league-caster-cockpit',
       type: 'MapZoomIn',
       version: 1
     }
@@ -31,7 +31,7 @@ function mapZoomIn() {
 function mapZoomOut() {
   LPTE.emit({
     meta: {
-      namespace: 'module-vmix',
+      namespace: 'module-league-caster-cockpit',
       type: 'MapZoomOut',
       version: 1
     }
