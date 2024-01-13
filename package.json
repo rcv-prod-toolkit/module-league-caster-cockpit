@@ -12,7 +12,7 @@
       "main": "dist/plugin.js"
     },
     "needsBuild": true,
-    "toolkitVersion": "v1.8.0",
+    "toolkitVersion": ">=1.8",
     "dependencies": [
       "module-league-state",
       "module-league-static",
